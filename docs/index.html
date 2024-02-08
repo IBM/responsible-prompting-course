@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHI 2024 Course - Challenges and Opportunities for Responsible Prompting</title>
-  <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
-  <!-- <link rel="stylesheet" href="carbon-components.min.css"> -->
   <style>
     body {
       font-family: 'IBM Plex Sans', sans-serif;
-
       padding: 0;
+      margin: 0;
     }
 
     p {
         margin: 0.5em 0 1em 0;
+        line-height: 150%;
+    }
+
+    ul li {
+      margin-bottom: 1em;
     }
 
     .app-container {
@@ -24,21 +26,33 @@
     }
 
     .header {
+      height: 5em;
       background-color: #336699;
       color: #fff;
-      padding: 1em;
+      padding: 1em 1em 1em 2em;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       flex-shrink: 0;
     }
 
     .content {
-      padding: 2em 4em 1em 4em;
+      padding: 3em 10em 1em 10em;
     }
 
-    .definition {
+    p.definition {
         border-left: 1em solid rgba(80,21,123, 0.5);
-        padding: 1em;
-        font-size: 1.5em;
+        padding: 1em 3em 1em 1em;
+        margin: 1em 0 2em 0;
+        font-size: 1.2em;
+    }
+
+    p.figure {
+      text-align: center;
+    }
+
+    span.caption {
+      text-align: center;
+      font-size: 0.8em;
+      font-style: italic;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -56,9 +70,8 @@
       </div>
 
       <div class="content">
-        <p>Welcome to the website for the CHI 2024 Course on <strong>Challenges and Opportunities for Responsible Prompting</strong>.</p>
 
-        <h2>Course in a Glance</h2>
+        <h1>Course in a Glance</h1>
 
         <p>The realm of Generative Artificial Intelligence (GenAI) has reached its zenith, captivating widespread attention. However, the significance of responsible practices in interacting with these systems often goes unnoticed.</p>
 
@@ -68,59 +81,118 @@
 
         <p>Throughout the course, we will explore the integration of responsible practices with prompt engineering (prompting), dissecting key concepts, common structures, and productivity myths associated with prompting.</p>
 
-        <p>By combining responsible practices with prompting, we are proposing this idea of responsible prompting, which can be defined as:</p>
+        <p>The course borrows this lens from the Responsible and Inclusive Framework (R&I Framework), proposed by <a href="https://arxiv.org/abs/2302.11565" target="_blank">Sandoval et al.</a>, to critically reflect about GenAI and the role of prompting these models.</p>
+
+        <p>The R&I Framework orients critical reflection around:</p>
+          <ol>
+            <li>The social contexts of technology creation and use (e.g., Who created the technology? Who is using it? Who is being excluded?).</li>
+            <li>The power dynamics between self, business, and societal stakeholders (e.g., What are the forces guiding the use of GenAI? Is it an individual, a company, or a community? Why? How does this power dynamic impact different people?).</li>
+            <li>The impacts of technology on various communities across past, present, and future (e.g., Who were the ones impacted in the past by similar technologies? Who are the ones being mostly impacted right now? Who are the ones to be impacted directly or indirectly (non-users) by this technology in the future? What about the data used to train these models? What are the implications for human labor?).</li>
+          </ol>
+        </p>
+
+        <p>By combining responsible innovation with prompting, we are proposing this new approach of responsible prompting, which can be defined as:</p>
 
         <p class="definition"><strong>Responsible Prompting:</strong> The process of communicating effectively with an AI to achieve desired results while avoiding or minimizing harms, promoting responsible practices, and employing mechanisms for anticipation, reflexivity, inclusion, and responsiveness.</p>
 
-        <h2>Reflecting on Domain Knowledge</h2>
-
-        <p>The course prompts a reflection on the value of domain knowledge while interacting with GenAI, fostering discussions across different domains and scenarios for prompting GenAI.</p>
-
         <h2>Unveiling the "Anatomy of Prompts"</h2>
 
-        <p>Materials analyzed for the course include references for both text and image/artwork generation. The presented "anatomy of prompts" covers over 4 million possible prompt templates, providing participants with practical insights and code for generating these templates.</p>
+        <p>Materials surveyed for the creation of the course include references for both text and image/artwork generation. The presented "anatomy of prompts" allows the generation of over 6 million possible prompt templates, providing participants with practical insights and <a href="https://github.com/IBM/responsible-prompting-course/blob/master/LLM%20Prompt%20Templates.ipynb" target="_blank">code for generating these templates</a>.</p>
 
-        <p><a href="./prompt_anatomy.png"><img src="./prompt_anatomy.png" width="100%" alt="Prompt anatomy summarizing common structures and possibilities for prompts"></a></p>
+        <p class="figure">
+          <a href="./prompt_anatomy.png"><img src="./prompt_anatomy.png" width="100%" alt="Prompt anatomy summarizing common structures and possibilities for prompts"></a><br>
+          <span class="caption"><strong>Figure 1.</strong> The proposed "anatomy of prompts" is the result of a survey that originated the course, combining materials in an easier to consume format.</span>
+        </p>
+
+        <p>The anatomy of prompts results from a survey performed around ways of prompting and covers the following building blocks:
+          <ul>
+            <li><strong>Role:</strong> defining a specific role to be followed.</li>
+            <li><strong>DOs:</strong> instructions of what the GenAI must do.</li>
+            <li><strong>Context:</strong> details about the context.</li>
+            <li><strong>Input:</strong> content to be provided, sample content, one/few shot, etc.</li>
+            <li><strong>DON'Ts:</strong> instructions of what the GenAI must NOT do.</li>
+            <li><strong>Output:</strong> specification of the output.</li>
+            <li><strong>Assessing understanding:</strong> asking for input from the model to double check understanding of the prompt as a whole.</li>
+            <li><strong>Iteration:</strong> ways of refining the prompt or dealing with limits of the tokens, conversation length.</li>
+          </ul>
+        </p>
+
+        <p>Here is a small sample of the prompt templates that will be covered during the course. You can use the templates as guides for prompting, improving the generation of more comprehensive datasets of templates, or generating specific templates (or concrete prompts) that are useful for your specific case.</p>
+
+        <p>
+          <ul>
+            <li>Act as {{role}} with {{years_of_experience}} years of experience. Give me the {{number}} key takeaways from {{content}}. I have a {{file_type}}. Consider the following examples. Label: {{label}}. Content: {{data_point}}. Do not make up things. Respond with verbatim {{reference}}. Ask me for details if needed. </li>
+            <li>Consider the perspective of a {{role}}. What is wrong with {{topic}}? I have a {{file_type}}. Here is a chunk of data: {{data_sample}}. Do not provide explanations. Format output in a {{sentiment}} tone. Ask me for details if needed. Follow the instructions provided.</li>
+            <li>Pretend that you are {{role}}. Criticize {{content}}. My {{content}} starts with {{content_sample}}. For this content: {{data}}. Remove {{attributes}}. Format output as a {{file_type}} file. Answer yes if you understand. Follow the instructions provided.</li>
+            <li>You have an IQ of {{iq_score}}. Predict {{machine_learning_task}}. I have a {{file_type}}. For this content: {{data}}. Do not make up things. Format output to a {{audience}}. My first request is {{sub_prompt}}. Follow the instructions provided.</li>
+          </ul>
+        </p>
 
         <h2>Navigating Challenges with Responsible Prompting</h2>
 
         <p>Given the challenges associated with inconsistent outputs, the course introduces common prompt hacking techniques such as prompt injection, prompt leaking, and jailbreaking. These shed light on the intricacies of responsible prompting.</p>
 
-        <h2>Visualizations for Enhanced Understanding</h2>
+        <p class="figure">
+          <img src="./20240207-jailbreaking-thinking_out_loud.png" width="100%" alt="Example of think out loud jailbraking prompt hacking."/><br>
+          <span class="caption"><strong>Figure 2.</strong> Example of prompt hacking using jailbraking with think out loud, approach discovered by the course instructor in Feb/07/2024.</span>
+        </p>
+
+        <h2>Reflecting on Domain Knowledge and Visualization Tools</h2>
+
+        <p>The course prompts a reflection on the value of domain knowledge while interacting with GenAI, fostering discussions across different domains and scenarios for prompting GenAI.</p>
 
         <p>The course also explores visualizations and visual tools for prompting to provide users with guidance, transparency, and explainability. Understanding how elements are placed in the latent space used by GenAI empowers users to make use of additional guidance.</p>
 
-        <!-- [Include Figure: Visualizations for Responsible Prompting] -->
+        <p>Examples of visual tools for prompting that both show the value of domain knowledge and also supporting bridging the gap between domain knowledge and prompting:<br>
+          <a href="https://promptomania.com/generic-prompt-builder/" target="_blank"><img src="./promptomania.png" width="33%" alt="Promptomania tool screenshot"/></a>
+          <a href="https://tools.saxifrage.xyz/prompt#" target="_blank"><img src="./visual_prompt_builder.png" width="33%" alt="Visual Prompt Builder screenshot"/></a>
+          <a href="https://www.dallelist.com/" target="_blank"><img src="./dallelist.png" width="33%" alt="Dallelist screenshot"/></a>
+        </p>
 
         <h2>Hands-On Learning Experience</h2>
 
         <p>Participants will engage in practical exercises using popular text-to-text and text-to-image GenAI, iterating over provided examples or crafting prompts from scratch. Course takeaways include strategies for crafting more responsible prompts, detecting attempts to circumvent guardrails, and leveraging visual tools to bridge the domain knowledge gap.</p>
 
+        <p>Here are examples of approaches covered in the course regarding text-to-text GenAI:
+          <ul>
+            <li><strong>3 Principles:</strong> be specific, provide context, and iterate &amp; improve.</li>
+            <li><strong>RGC:</strong> Role, Result, Goal, Context, and Constraing.</li>
+            <li><strong>Building blocks from the "anatomy of prompts":</strong> Role, DOs, context, input, DON'Ts, output, assessing understanding, and iteration.</li>
+          </ul>
+        </p>
+
+        <p>Here is an approach covered in the course regarding text-to-image GenAI:
+          <ul>
+            <li>Comma separated terms for describing the image, lighting, environment, style, color scheme, point of view, background, render, photo specification, and model params.</li>
+          </ul>
+        </p>
+
         <h2>Towards Responsible Practices</h2>
 
-        <p>In conclusion, mastering responsible practices in GenAI prompt engineering is crucial for harnessing the full potential of these systems. The course offers a roadmap for responsible prompting, providing participants with the tools and insights needed to navigate the evolving landscape of GenAI. Join us in shaping the future of responsible AI moving towards more responsible ways of prompting Generative AI!</p>
+        <p>In conclusion, applying responsible practices in GenAI prompting is crucial for harnessing the full potential of these systems while minimizing eventual harmful outcomes it may generate.</p>
+        <p>The course offers a roadmap for prompting, providing participants with the tools, pointers, approaches, insights, and initial reflections about how to navigate the evolving landscape of GenAI under the lens of responsible prompting.</p>
+        <p>Join us in shaping the future of responsible AI moving towards more responsible ways of prompting Generative AI!</p>
 
-        <h2>Resources</h2>
+        <h3>Resources</h3>
         <p>
-        <!-- Course slides </br>-->
-        <a href="./prompt_anatomy-poster.png">Prompt anatomy poster</a></br>
-        <!-- Code for generating prompt templates </br>-->
+        <!-- TODO: add link to course slides <br>-->
+        <a href="./prompt_anatomy-poster.png">Prompt anatomy poster</a><br>
+        <a href="https://github.com/IBM/responsible-prompting-course/blob/master/LLM%20Prompt%20Templates.ipynb" target="_blank">Code for generating prompt templates</a><br>
         <a href="https://arxiv.org/abs/2302.11565" target="_blank">Responsible and Inclusive Framework paper</a>
         </p>
 
-        <h2>Citing this course</h2>
+        <h3>Citing this course</h3>
 
         <p>Please cite this course material as follows:</p>
         <p><em>Vagner Figueredo de Santana. 2024. Challenges and Opportunities for Responsible Prompting. In Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’24), May 11–16, 2024, Honolulu, HI, USA. ACM, New York, NY, USA, 4 pages. <a href="https://doi.org/10.1145/3613905.3636268" target="_blank">https://doi.org/10.1145/3613905.3636268</a></em></p>
 
-
-        <h2>Instructor</h2>
+        <h3>Instructor</h3>
 
         <p>
-        <strong>Vagner Figueredo de Santana, PhD.</strong>, Research Scientist</br>
-        <strong>IBM Research</strong> | T.J. Watson Research Center | Responsible and Inclusive Tech Team</br>
-        <a href="https://www.linkedin.com/in/santanavagner" target="_blank">LinkedIn profile</a></br>
-        <a href="https://www.researchgate.net/profile/Vagner_Santana" target="_blank">ResearchGate profile</a></br>
+        <strong>Vagner Figueredo de Santana, PhD.</strong>, Research Scientist<br>
+        <strong>IBM Research</strong> | T.J. Watson Research Center | Responsible and Inclusive Tech Team<br>
+        <a href="https://www.linkedin.com/in/santanavagner" target="_blank">LinkedIn profile</a><br>
+        <a href="https://www.researchgate.net/profile/Vagner_Santana" target="_blank">ResearchGate profile</a><br>
         <a href="https://twitter.com/santanavagner" target="_blank">Twitter profile</a>
         </p>
 
